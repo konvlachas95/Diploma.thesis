@@ -8,7 +8,7 @@ import sys
 
 import pretty_errors
 
-# n = 33
+# n = 11
 # Ns = 60
 # beta0 = 0.
 # beta1 = 3.
@@ -16,7 +16,7 @@ import pretty_errors
 # J0 = [ 4, 4, 4 ]
 # G = gr.lattice_von_neumann(n)
 
-n = 33
+n = 11
 Ns = 60
 beta = 2.
 lamda0 = 0.05

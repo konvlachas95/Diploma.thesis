@@ -11,7 +11,7 @@ import networkx as nx
 ########################
 # 1000 iterations per agent
 # Figure 1a (upper left)
-n = 33
+n = 11
 beta = 0.3
 gamma = 0.1
 N_tags = 1
@@ -22,7 +22,7 @@ lattice = "lattice_von_neumann"
 node_size = 100
 
 # Figure 1b (upper right)
-n = 33
+n = 11
 beta = 1.0
 gamma = 0.1
 N_tags = 1
@@ -33,7 +33,7 @@ lattice = "lattice_von_neumann"
 node_size = 100
 
 # Figure 1c (lower left)
-n = 33
+n = 11
 beta = 2.0
 gamma = 0.1
 N_tags = 1
@@ -44,7 +44,7 @@ lattice = "lattice_von_neumann"
 node_size = 100
 
 # Figure 1d (lower right)
-n = 33
+n = 11
 beta = 2.0
 gamma = 0.1
 N_tags = 1
@@ -55,7 +55,7 @@ lattice = "lattice_von_neumann"
 node_size = 100
 
 # Figure 2a
-n = 33
+n = 11
 beta = 2.0
 gamma = 0.1
 N_tags = 1

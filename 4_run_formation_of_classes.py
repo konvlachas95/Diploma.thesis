@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import networkx as nx
 
-# n = 36
+# n = 12
 # beta = 1.2
 # gamma = 0.1
 # N_tags = 2
@@ -19,7 +19,7 @@ import networkx as nx
 # # seed = 50
 # seed = 30
   
-# n = 36
+# n = 12
 # beta = 1.2
 # gamma = 0.1
 # N_tags = 2
@@ -31,7 +31,7 @@ import networkx as nx
 # node_size = 1000
 # seed = 30
 
-n = 36
+n = 12
 beta = 1.2
 gamma = 0.1
 N_tags = 2
@@ -43,7 +43,7 @@ lattice = "off_lattice"
 node_size = 1000
 seed = 30
 
-# n = 36
+# n = 12
 # beta = 1.5
 # gamma = 0.1
 # N_tags = 2
@@ -55,7 +55,7 @@ seed = 30
 # node_size = 1000
 # seed = 30
 
-# n           = 36
+# n           = 12
 # beta        = 1.0
 # gamma       = 0.1
 # N_tags      = 2

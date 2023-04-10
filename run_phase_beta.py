@@ -8,7 +8,7 @@ import sys
 
 import pretty_errors
 
-n = 33
+n = 11
 beta0 = 0.
 beta1 = 3.
 N_tags = 1
@@ -17,7 +17,7 @@ G = gr.lattice_von_neumann(n)
 beta = np.linspace(beta1, beta0, 60)
 beta = np.concatenate((beta, np.flip(beta[1:-1])))
 
-# n = 33
+# n = 11
 # beta0 = 0.
 # beta1 = 2.
 # N_tags = 1
