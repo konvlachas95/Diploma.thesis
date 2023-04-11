@@ -14,7 +14,7 @@ import networkx as nx
 # N_epochs    = 500
 # # N_epochs = 2000
 # num_runs = 6
-# lattice = "off_lattice"
+# lattice = "lattice_von_neumann"
 # node_size = 1000
 # # seed = 50
 # seed = 30
@@ -27,7 +27,7 @@ import networkx as nx
 # N_epochs    = 500
 # # N_epochs = 2000
 # num_runs = 4
-# lattice = "off_lattice"
+# lattice = "lattice_von_neumann"
 # node_size = 1000
 # seed = 30
 
@@ -39,7 +39,7 @@ J0 = [ 4, 1, 1 ]
 # N_epochs    = 1000
 N_epochs = 500
 num_runs = 4
-lattice = "off_lattice"
+lattice = "lattice_von_neumann"
 node_size = 1000
 seed = 30
 
@@ -51,7 +51,7 @@ seed = 30
 # N_epochs    = 1000
 # # N_epochs = 2000
 # num_runs = 4
-# lattice = "off_lattice"
+# lattice = "lattice_von_neumann"
 # node_size = 1000
 # seed = 30
 
@@ -62,14 +62,11 @@ seed = 30
 # J0          = [ 4, 1, 4 ]
 # N_epochs    = 500
 # num_runs    = 10
-# lattice     = "off_lattice"
+# lattice     = "lattice_von_neumann"
 # node_size   = 1000
 # seed        = 1
 
-if lattice == "off_lattice":
-    G = gr.off_lattice(n * n)
-elif lattice == "lattice_von_neumann":
-    G = gr.lattice_von_neumann(n)
+G = gr.lattice_von_neumann(n)
 
 run_name = "_results_n={:}_beta={:}_gamma={:}_J0={:}_lattice={:}_Ν={:}_S={:}".format(n, beta, gamma, J0, lattice, N_tags, seed)
 

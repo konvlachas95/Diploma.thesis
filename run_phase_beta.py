@@ -27,9 +27,9 @@ beta = np.concatenate((beta, np.flip(beta[1:-1])))
 # Ns = 60
 # beta = np.linspace(beta1, beta0, Ns)
 # # Ns = 14+20+20
-# # x1 = np.linspace(beta1,1.5,10)
-# # x2 = np.linspace(1.5, 1.25, 20)
-# # x3 = np.linspace(1.25, beta0, 20)
+# # x1 = np.linspace(beta1,1.5,10) ????????????????
+# # x2 = np.linspace(1.5, 1.25, 20) ???????????????
+# # x3 = np.linspace(1.25, beta0, 20) ?????????????
 # # beta = np.concatenate((x1,x2,x3))
 # beta = np.concatenate((beta,np.flip(beta[1:-1])))
 

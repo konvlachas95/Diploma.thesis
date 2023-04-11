@@ -8,24 +8,16 @@ import sys
 
 import pretty_errors
 
-# n = 11
 # Ns = 60
-# beta0 = 0.
-# beta1 = 3.
-# N_tags = 1
-# J0 = [ 4, 4, 4 ]
-# G = gr.lattice_von_neumann(n)
-# beta = np.linspace(beta1, beta0, Ns)
 
 n = 11
 beta0 = 0.
-beta1 = 2.
+beta1 = 3.
 N_tags = 1
-# J0 = [ 1, 10, 1 ]
-J0 = [ 6, 0, 3 ]
-G = gr.off_lattice(n * n)
-# Ns = 60
-# beta = np.linspace(beta1, beta0, Ns)
+J0 = [ 4, 4, 4 ]
+G = gr.lattice_von_neumann(n)
+beta = np.linspace(beta1, beta0, Ns)
+
 Ns = 14 + 20 + 20
 x1 = np.linspace(beta1, 1.5, 10)
 x2 = np.linspace(1.5, 1.25, 20)

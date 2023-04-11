@@ -65,10 +65,7 @@ num_runs = 1
 lattice = "lattice_von_neumann"
 node_size = 100
 
-if lattice == "off_lattice":
-    G = gr.off_lattice(n * n)
-elif lattice == "lattice_von_neumann":
-    G = gr.lattice_von_neumann(n)
+G = gr.lattice_von_neumann(n)
 
 run_name = "_results_n={:}_beta={:}_gamma={:}_J0={:}_lattice={:}_Ν={:}".format(n, beta, gamma, J0, lattice, N_tags)
 
@@ -81,7 +78,7 @@ for k in range(num_runs):
 
 game.plot_graph(node_size=node_size)
 plt.show()
-plt.close()
+#plt.close()
 game.plot_statistics()
 plt.show()
-plt.close()
+#plt.close()
