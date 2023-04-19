@@ -8,12 +8,16 @@ from numba import jit
 import os
 from tqdm import tqdm
 
-
+#####################################
+#Δημιουργία τυχαίου "r" μεταξύ 0 και 1 και επιστρέφει δείκτη του πρώτου στοιχείου στο αθροιστικό άθροισμα των πιθανοτήτων που υπερβαίνει αυτόν τον τυχαίο αριθμό "r"
+#####################################
 @jit(nopython=True)
 def random_choice(p, r):
     return np.argmax(np.cumsum(p) > r)
 
-
+#####################################
+#Καθορισμός μεγέθους κόμβων
+#####################################
 @jit(nopython=True)
 def size_of_nodes(x):
     x = np.sqrt(x)
@@ -23,8 +27,10 @@ def size_of_nodes(x):
     d = -0.0781
     return np.exp(b*x + a) + np.exp(d*x + c)
 
-
-@jit(nopython=True)
+#####################################
+#Υπολογισμός πιθανότητας ενεργειών. "x" (=ανταμοιβές) και μια παράμετρο "beta" (=).
+#####################################
+@jit(nopython=True)Σ
 def _probalility_of_action(x, beta):
     p = np.exp(beta * x)
     return (p.T / p.sum(axis=-1)).T

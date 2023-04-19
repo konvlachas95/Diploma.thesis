@@ -11,6 +11,7 @@ import networkx as nx
 ########################
 # 1000 iterations per agent
 # Figure 1a (upper left)
+
 n = 11
 beta = 0.3
 gamma = 0.1
