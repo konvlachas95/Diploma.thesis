@@ -30,7 +30,7 @@ def size_of_nodes(x):
 #####################################
 #Υπολογισμός πιθανότητας ενεργειών. "x" (=ανταμοιβές) και μια παράμετρο "beta" (=).
 #####################################
-@jit(nopython=True)Σ
+@jit(nopython=True)
 def _probalility_of_action(x, beta):
     p = np.exp(beta * x)
     return (p.T / p.sum(axis=-1)).T
