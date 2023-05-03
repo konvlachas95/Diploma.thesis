@@ -9,7 +9,7 @@ import networkx as nx
 import pretty_errors
 
 n = 10
-node_size = 300
+node_size = 100
 
 G = gr.lattice_von_neumann(n)
 
