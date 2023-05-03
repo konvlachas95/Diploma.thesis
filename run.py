@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import networkx as nx
 
-import pretty_errors
+#library not used
+#import pretty_errors
 
 n = 10
 node_size = 100
