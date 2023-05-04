@@ -9,11 +9,11 @@ import pretty_errors
 
 def J_ode(Y, t, beta=1, gamma=0.05):
     y1, y2, y3 = Y
-    y1dot = -gamma * y1 + 0.3 * np.exp(beta * y1) / (np.exp(beta * y1) + np.exp(beta * y2) + np.exp(beta * y3))
-    y2dot = -gamma * y2 + 0.5 * np.exp(beta * y2) * (np.exp(beta * y1) + np.exp(beta * y2)) / (
-        np.exp(beta * y1) + np.exp(beta * y2) + np.exp(beta * y3)) ** 2
-    y3dot = -gamma * y3 + 0.7 * np.exp(beta * y3) * (np.exp(
-        beta * y1)) / (np.exp(beta * y1) + np.exp(beta * y2) + np.exp(beta * y3)) ** 2
+    exp_beta_y1, exp_beta_y2, exp_beta_y3 = np.exp(beta * y1), np.exp(beta * y2), np.exp(beta * y3)
+    sum_exp_beta = exp_beta_y1 + exp_beta_y2 + exp_beta_y3
+    y1dot = -gamma * y1 + 0.3 * exp_beta_y1 / sum_exp_beta
+    y2dot = -gamma * y2 + 0.5 * exp_beta_y2 * (exp_beta_y1 + exp_beta_y2) / sum_exp_beta ** 2
+    y3dot = -gamma * y3 + 0.7 * exp_beta_y3 * exp_beta_y1 / sum_exp_beta ** 2
     return y1dot, y2dot, y3dot
 
 
@@ -46,9 +46,8 @@ for i in range(NI):
 
         beta = 0.58
         yprime = J_ode(y0, t, beta=beta)
-        u[i, j] = yprime[0]
-        v[i, j] = yprime[1]
-
+        u[i, j], v[i, j] = yprime[0], yprime[1]
+        
         tspan = np.linspace(0, 800, 400)
         f = lambda y, t: J_ode(y, t, beta=beta)
         ys = odeint(f, y0, tspan, hmax=1e-1)
