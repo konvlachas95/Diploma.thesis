@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import networkx as nx
 
-########################
-# Figure 1
+
 ########################
 # 1000 iterations per agent
+########################
+
 
 # Figure 1a (upper left)
-
 #n = 11
 #beta = 0.3
 #gamma = 0.1
@@ -35,15 +35,15 @@ import networkx as nx
 #node_size = 100
 
 # Figure 1c (lower left)
-n = 11
-beta = 2.0
-gamma = 0.1
-N_tags = 1
-J0 = [ 4, 1, 4 ]
-N_epochs = 2000
-num_runs = 1
-lattice = "lattice_von_neumann"
-node_size = 100
+#n = 11
+#beta = 2.0
+#gamma = 0.1
+#N_tags = 1
+#J0 = [ 4, 1, 4 ]
+#N_epochs = 2000
+#num_runs = 1
+#lattice = "lattice_von_neumann"
+#node_size = 100
 
 # Figure 1d (lower right)
 #n = 11
@@ -56,16 +56,16 @@ node_size = 100
 #lattice = "lattice_von_neumann"
 #node_size = 100
 
-# Figure 2a
-#n = 11
-#beta = 2.0
-#gamma = 0.1
-#N_tags = 1
-#J0 = [ 1, 4, 1 ]
-#N_epochs = 2000
-#num_runs = 1
-#lattice = "lattice_von_neumann"
-#node_size = 100
+# Figure 2a (upper plot)
+n = 11
+beta = 2.0
+gamma = 0.1
+N_tags = 1
+J0 = [ 1, 4, 1 ]
+N_epochs = 2000
+num_runs = 1
+lattice = "lattice_von_neumann"
+node_size = 100
 
 G = gr.lattice_von_neumann(n)
 
