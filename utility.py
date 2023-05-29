@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 import matplotlib
-###changing the backend for faster time###
-matplotlib.use('agg')
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np

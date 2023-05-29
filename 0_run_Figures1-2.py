@@ -10,28 +10,29 @@ import networkx as nx
 # Figure 1
 ########################
 # 1000 iterations per agent
+
 # Figure 1a (upper left)
 
-n = 11
-beta = 0.3
-gamma = 0.1
-N_tags = 1
-J0 = [ 4, 4, 4 ]
-N_epochs = 2000
-num_runs = 1
-lattice = "lattice_von_neumann"
-node_size = 100
+#n = 11
+#beta = 0.3
+#gamma = 0.1
+#N_tags = 1
+#J0 = [ 4, 4, 4 ]
+#N_epochs = 2000
+#num_runs = 1
+#lattice = "lattice_von_neumann"
+#node_size = 100
 
 # Figure 1b (upper right)
-n = 11
-beta = 1.0
-gamma = 0.1
-N_tags = 1
-J0 = [ 4, 4, 4 ]
-N_epochs = 2000
-num_runs = 1
-lattice = "lattice_von_neumann"
-node_size = 100
+#n = 11
+#beta = 1.0
+#gamma = 0.1
+#N_tags = 1
+#J0 = [ 4, 4, 4 ]
+#N_epochs = 2000
+#num_runs = 1
+#lattice = "lattice_von_neumann"
+#node_size = 100
 
 # Figure 1c (lower left)
 n = 11
@@ -45,26 +46,26 @@ lattice = "lattice_von_neumann"
 node_size = 100
 
 # Figure 1d (lower right)
-n = 11
-beta = 2.0
-gamma = 0.1
-N_tags = 1
-J0 = [ 4, 4, 4 ]
-N_epochs = 2000
-num_runs = 1
-lattice = "lattice_von_neumann"
-node_size = 100
+#n = 11
+#beta = 2.0
+#gamma = 0.1
+#N_tags = 1
+#J0 = [ 4, 4, 4 ]
+#N_epochs = 2000
+#num_runs = 1
+#lattice = "lattice_von_neumann"
+#node_size = 100
 
 # Figure 2a
-n = 11
-beta = 2.0
-gamma = 0.1
-N_tags = 1
-J0 = [ 1, 4, 1 ]
-N_epochs = 2000
-num_runs = 1
-lattice = "lattice_von_neumann"
-node_size = 100
+#n = 11
+#beta = 2.0
+#gamma = 0.1
+#N_tags = 1
+#J0 = [ 1, 4, 1 ]
+#N_epochs = 2000
+#num_runs = 1
+#lattice = "lattice_von_neumann"
+#node_size = 100
 
 G = gr.lattice_von_neumann(n)
 
@@ -74,12 +75,12 @@ game = bargain(G, beta=beta, gamma=gamma, J0=J0, folder=run_name, N_tags=N_tags)
 
 for k in range(num_runs):
     game.play(N_epochs=N_epochs)
-    # game.plot_graph(node_size=node_size)
-    # game.plot_statistics()
+    game.plot_graph(node_size=node_size)
+    game.plot_statistics()
+    
 
 game.plot_graph(node_size=node_size)
 plt.show()
-#plt.close()
+
 game.plot_statistics()
 plt.show()
-#plt.close()
