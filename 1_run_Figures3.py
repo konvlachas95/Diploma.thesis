@@ -31,5 +31,8 @@ for k in range(num_runs):
     # game.plot_statistics()
 
 game.plot_graph(node_size=node_size)
+plt.pause(5)
 game.plot_statistics()
+plt.pause(5)
 game.plot_simplex()
+plt.pause(5)
