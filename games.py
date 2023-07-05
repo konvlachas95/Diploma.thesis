@@ -167,8 +167,8 @@ class bargain:
             p1 = 0.5 - self.lamda
             p2 = 0.5 + self.lamda
             self.payoff[0] = [ p1, p1, p1 ]
-            self.payoff[1] = [ 0.5, 0.5, 0.0 ]
-            self.payoff[2] = [ p2, 0.0, 0.0 ]
+            self.payoff[1] = [ 0.5, 0.5, -0.2 ]
+            self.payoff[2] = [ p2, -0.2, -0.2 ]
             self.gamma_payoff = self.gamma * self.payoff
 
         self.nodes = np.array(self.G.nodes)
