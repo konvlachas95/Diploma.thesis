@@ -17,7 +17,7 @@ import networkx as nx
 #beta = 0.3
 #gamma = 0.1
 #N_tags = 1
-#J0 = [ 4, 4, 4 ]
+#J0 = [ 4, 1, 1 ]
 #N_epochs = 2000
 #num_runs = 1
 #lattice = "lattice_von_neumann"
@@ -28,22 +28,22 @@ import networkx as nx
 #beta = 1.0
 #gamma = 0.1
 #N_tags = 1
-#J0 = [ 4, 4, 4 ]
+#J0 = [ 4, 1, 1 ]
 #N_epochs = 2000
 #num_runs = 1
 #lattice = "lattice_von_neumann"
 #node_size = 100
 
 # Figure 3
-#n = 11
-#beta = 2.0
-#gamma = 0.1
-#N_tags = 1
-#J0 = [ 1, 4, 1 ]
-#N_epochs = 2000
-#num_runs = 1
-#lattice = "lattice_von_neumann"
-#node_size = 100
+n = 11
+beta = 2.0
+gamma = 0.1
+N_tags = 1
+J0 = [ 4, 1, 1 ]
+N_epochs = 2000
+num_runs = 1
+lattice = "lattice_von_neumann"
+node_size = 100
 
 G = gr.lattice_von_neumann(n)
 
