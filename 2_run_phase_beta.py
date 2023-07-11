@@ -8,7 +8,7 @@ import sys
 
 import pretty_errors
 
-# Ns = 60
+Ns = 60
 
 n = 11
 beta0 = 0.
