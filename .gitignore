@@ -1,2 +1,8 @@
 /venv-games
 /_results
+/results λ=0.1 A=5
+/results λ=0.1 A=1000
+/results λ=0.3 A=5
+/results λ=0.3 A=1000
+/results λ=0.49 A=5
+/results λ=0.49 A=1000
