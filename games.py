@@ -85,7 +85,7 @@ class bargain:
         G,
         beta=1.,
         gamma=0.1,
-        lamda=0.2,
+        lamda=0.45,
         seed=None,
         J0=[ 4, 4, 4 ],
         payoff=None,

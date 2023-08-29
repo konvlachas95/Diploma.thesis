@@ -8,7 +8,7 @@ import sys
 
 import pretty_errors
 
-# Ns = 60
+Ns = 60
 
 n = 11
 beta0 = 0.
@@ -30,11 +30,13 @@ LHM = np.zeros((3, Ns, N_tags))
 
 fig, ax = plt.subplots()
 
+###run sim for diff betas###
 for k in range(Ns):
     print(f'Running {k} out of {Ns} betas...')
 
     game = bargain(G, beta=beta[k], J0=J0, N_tags=N_tags)
 
+    ###Set epochs num based on curr iter###
     if k == 0:
         N_per_epoch = int(5e5)
     else:
@@ -47,10 +49,13 @@ for k in range(Ns):
     game.copy_data_to_graph()
     G = game.G
 
+    ###Calc % of diff actions and store in LHM array###
     LHM[0, k, :] = np.sum(game.actions == 0) / N_nodes
     LHM[1, k, :] = np.sum(game.actions == 1) / N_nodes
     LHM[2, k, :] = np.sum(game.actions == 2) / N_nodes
 
+
+    ###update plot###
     plt.figure(fig.number)
     ax.clear()
     ax.plot(beta, LHM[0, :, :], 'ro-', label='Low', markersize=3)
@@ -62,6 +67,8 @@ for k in range(Ns):
     plt.pause(0.005)
     plt.show(block=False)
 
+
+###save phase diagram data to files###
 for tag in range(N_tags):
     name = 'phase_beta_tag_' + str(tag) + '.txt'
     z = (beta[:, np.newaxis], np.squeeze(LHM[:, :, tag]).T)

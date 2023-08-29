@@ -32,39 +32,16 @@ import networkx as nx
 # seed = 30
 
 n = 12
-beta = 1.2
+beta = 1.5
 gamma = 0.1
 N_tags = 2
-J0 = [ 4, 1, 1 ]
-# N_epochs    = 1000
-N_epochs = 500
+J0 = [ 1, 1, 4 ]
+N_epochs    = 1000
 num_runs = 4
 lattice = "lattice_von_neumann"
 node_size = 1000
 seed = 30
 
-# n = 12
-# beta = 1.5
-# gamma = 0.1
-# N_tags = 2
-# J0 = [ 4, 1, 4 ]
-# N_epochs    = 1000
-# # N_epochs = 2000
-# num_runs = 4
-# lattice = "lattice_von_neumann"
-# node_size = 1000
-# seed = 30
-
-# n           = 12
-# beta        = 1.0
-# gamma       = 0.1
-# N_tags      = 2
-# J0          = [ 4, 1, 4 ]
-# N_epochs    = 500
-# num_runs    = 10
-# lattice     = "lattice_von_neumann"
-# node_size   = 1000
-# seed        = 1
 
 G = gr.lattice_von_neumann(n)
 
@@ -75,9 +52,13 @@ game = bargain(G, beta=beta, gamma=gamma, J0=J0, folder=run_name, N_tags=N_tags,
 for k in range(num_runs):
     game.play(N_epochs=N_epochs)
     # game.plot_graph(node_size=node_size)
-    game.plot_statistics()
-    game.plot_simplex()
+    # game.plot_statistics()
+    # game.plot_simplex()
 
 game.plot_statistics()
+plt.pause(0.05)
 game.plot_simplex()
+plt.pause(0.05)
 game.plot_graph(node_size=node_size)
+plt.pause(0.05)
+

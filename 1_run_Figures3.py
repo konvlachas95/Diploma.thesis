@@ -7,14 +7,14 @@ import numpy as np
 import networkx as nx
 
 ########################
-# Figure 3
+# Figure 4
 ########################
 
 n = 6
 beta = 2.0
 gamma = 0.1
 N_tags = 1
-J0 = [ 4, 4, 4 ]
+J0 = [ 1, 1, 4 ]
 N_epochs = 2000
 num_runs = 1
 lattice = "lattice_von_neumann"
