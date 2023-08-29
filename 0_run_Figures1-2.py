@@ -12,16 +12,16 @@ import networkx as nx
 ########################
 
 
-# Figure 1
-n = 11
-beta = 0.3
-gamma = 0.1
-N_tags = 1
-J0 = [ 4, 1, 1 ]
-N_epochs = 2000
-num_runs = 1
-lattice = "lattice_von_neumann"
-node_size = 100
+# Figure 1a (upper left)
+#n = 11
+#beta = 0.3
+#gamma = 0.1
+#N_tags = 1
+#J0 = [ 4, 4, 4 ]
+#N_epochs = 2000
+#num_runs = 1
+#lattice = "lattice_von_neumann"
+#node_size = 100
 
 # Figure 2
 #n = 11
@@ -34,16 +34,38 @@ node_size = 100
 #lattice = "lattice_von_neumann"
 #node_size = 100
 
-# Figure 3
-# n = 11
-# beta = 5.0
-# gamma = 0.1
-# N_tags = 1
-# J0 = [ 1, 1, 4 ]
-# N_epochs = 2000
-# num_runs = 1
-# lattice = "lattice_von_neumann"
-# node_size = 100
+# Figure 1c (lower left)
+#n = 11
+#beta = 2.0
+#gamma = 0.1
+#N_tags = 1
+#J0 = [ 4, 1, 4 ]
+#N_epochs = 2000
+#num_runs = 1
+#lattice = "lattice_von_neumann"
+#node_size = 100
+
+# Figure 1d (lower right)
+#n = 11
+#beta = 2.0
+#gamma = 0.1
+#N_tags = 1
+#J0 = [ 4, 4, 4 ]
+#N_epochs = 2000
+#num_runs = 1
+#lattice = "lattice_von_neumann"
+#node_size = 100
+
+# Figure 2a (upper plot)
+n = 11
+beta = 2.0
+gamma = 0.1
+N_tags = 1
+J0 = [ 1, 4, 1 ]
+N_epochs = 2000
+num_runs = 1
+lattice = "lattice_von_neumann"
+node_size = 100
 
 G = gr.lattice_von_neumann(n)
 
