@@ -12,23 +12,11 @@ import networkx as nx
 ########################
 
 
-# Figure
-# n = 11
-# beta = 0.3
-# gamma = 0.1
-# lamda = 0.3
-# N_tags = 1
-# J0 = [ 4, 4, 4 ]
-# N_epochs = 2000
-# num_runs = 1
-# lattice = "lattice_von_neumann"
-# node_size = 100
-
-# Figure b=1.0
+# Params Initialization
 n = 21
-beta = 1.7
+beta = 3.0
 gamma = 0.1
-lamda = 0.17
+lamda = 0.3
 alpha = 1
 N_tags = 1
 J0 = [ 1, 1, 4 ]
@@ -36,18 +24,6 @@ N_epochs = 2000
 num_runs = 1
 lattice = "lattice_von_neumann"
 node_size = 100
-
-# Figure b=3.0
-# n = 11
-# beta = 3.0
-# gamma = 0.1
-# lamda = 0.3
-# N_tags = 1
-# J0 = [ 1, 1, 4 ]
-# N_epochs = 2000
-# num_runs = 1
-# lattice = "lattice_von_neumann"
-# node_size = 100
 
 G = gr.lattice_von_neumann(n)
 
@@ -57,12 +33,10 @@ game = bargain(G, beta=beta, gamma=gamma, lamda=lamda, alpha=alpha, J0=J0, folde
 
 for k in range(num_runs):
     game.play(N_epochs=N_epochs)
-    game.plot_graph(node_size=node_size)
-    game.plot_statistics()
+    # game.plot_graph(node_size=node_size)
+    # game.plot_statistics()
     
 
 game.plot_graph(node_size=node_size)
-plt.show()
 
 game.plot_statistics()
-plt.show()

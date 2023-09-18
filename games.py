@@ -333,8 +333,8 @@ class bargain:
         self.ax_stats[k].set_ylabel('Number of nodes with p>0.99')
         fig_path = self.results_folder + '/number_of_nodes_P'
         plt.savefig(fig_path)
-        # plt.pause(0.005)
-        # plt.show(block=False)
+        plt.pause(0.005)
+        plt.show(block=False)
 
     def _get_vertex_positions(self, data, prob_axis=2):
         assert (prob_axis in [ 2, 3 ])
