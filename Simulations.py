@@ -7,20 +7,17 @@ import numpy as np
 import networkx as nx
 
 
-########################
-# 1000 iterations per agent
-########################
 
-
-# Params Initialization
-n = 21
 beta = 3.0
-gamma = 0.1
 lamda = 0.3
 alpha = 1
-N_tags = 1
 J0 = [ 1, 1, 4 ]
-N_epochs = 2000
+
+# stable Params Initialization
+n = 21
+gamma = 0.1
+N_tags = 1
+N_epochs = 5000
 num_runs = 1
 lattice = "lattice_von_neumann"
 node_size = 100
