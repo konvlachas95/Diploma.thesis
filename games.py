@@ -86,6 +86,7 @@ class bargain:
         beta=1.,
         gamma=0.1,
         lamda=0.45,
+        alpha = 1,
         seed=None,
         J0=[ 4, 4, 4 ],
         payoff=None,
@@ -96,6 +97,7 @@ class bargain:
         self.G = G
         self.beta = beta
         self.gamma = gamma
+        self.alpha = alpha
         self.payoff = payoff
         self.lamda = lamda
         self.N_tags = N_tags
@@ -165,7 +167,7 @@ class bargain:
         if self.payoff == None:
             self.payoff = np.zeros((3, 3))
             p1 = 0.5 - self.lamda
-            p2 = 0.5 + self.lamda
+            p2 = 0.5 + self.lamda / self.alpha
             self.payoff[0] = [ p1, p1, p1 ]
             self.payoff[1] = [ 0.5, 0.5, 0.0 ]
             self.payoff[2] = [ p2, 0.0, 0.0 ]
@@ -331,8 +333,8 @@ class bargain:
         self.ax_stats[k].set_ylabel('Number of nodes with p>0.99')
         fig_path = self.results_folder + '/number_of_nodes_P'
         plt.savefig(fig_path)
-        plt.pause(0.005)
-        plt.show(block=False)
+        # plt.pause(0.005)
+        # plt.show(block=False)
 
     def _get_vertex_positions(self, data, prob_axis=2):
         assert (prob_axis in [ 2, 3 ])
