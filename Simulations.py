@@ -7,13 +7,13 @@ import numpy as np
 import networkx as nx
 
 
+# variable parameters
+betas = [0.3, 1, 3]
+alphas = [1, 5, 10, 100]
+lamdas = [0.2, 0.4]
+J0_vals = [[4, 1, 1], [1, 4, 1], [1, 1, 4]]
 
-beta = 3.0
-lamda = 0.3
-alpha = 1
-J0 = [ 1, 1, 4 ]
-
-# stable Params Initialization
+# stable parameters initialization
 n = 21
 gamma = 0.1
 N_tags = 1
@@ -21,19 +21,20 @@ N_epochs = 5000
 num_runs = 1
 lattice = "lattice_von_neumann"
 node_size = 100
-
 G = gr.lattice_von_neumann(n)
 
-run_name = "_results_n={:}_beta={:}_gamma={:}_lamda={:}_alpha={:}_J0={:}_lattice={:}_Ν={:}".format(n, beta, gamma, lamda, alpha, J0, lattice, N_tags)
+for beta in betas:
+    for alpha in alphas:
+        for lamda in lamdas:
+            for J0 in J0_vals:
+            
+                run_name = "_results_n={:}_beta={:}_gamma={:}_lamda={:}_alpha={:}_J0={:}_lattice={:}_tags={:}".format(n, beta, gamma, lamda, alpha, J0, lattice, N_tags)
 
-game = bargain(G, beta=beta, gamma=gamma, lamda=lamda, alpha=alpha, J0=J0, folder=run_name, N_tags=N_tags)
-
-for k in range(num_runs):
-    game.play(N_epochs=N_epochs)
-    # game.plot_graph(node_size=node_size)
-    # game.plot_statistics()
-    
-
-game.plot_graph(node_size=node_size)
-
-game.plot_statistics()
+                game = bargain(G, beta=beta, gamma=gamma, lamda=lamda, alpha=alpha, J0=J0, folder=run_name, N_tags=N_tags)
+                for k in range(num_runs):
+                    game.play(N_epochs=N_epochs)
+                    # game.plot_graph(node_size=node_size)
+                    # game.plot_statistics()
+                    
+                game.plot_graph(node_size=node_size)
+                game.plot_statistics()
