@@ -53,7 +53,7 @@ G = gr.lattice_von_neumann(n)
 
 run_name = "_results_n={:}_beta={:}_gamma={:}_lamda={:}_alpha={:}_J0={:}_lattice={:}_Ν={:}".format(n, beta, gamma, lamda, alpha, J0, lattice, N_tags)
 
-game = bargain(G, beta=beta, gamma=gamma, lamda=lamda, J0=J0, folder=run_name, N_tags=N_tags)
+game = bargain(G, beta=beta, gamma=gamma, lamda=lamda, alpha=alpha, J0=J0, folder=run_name, N_tags=N_tags)
 
 for k in range(num_runs):
     game.play(N_epochs=N_epochs)
