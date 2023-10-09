@@ -1,0 +1,17 @@
+colorama
+cycler
+decorator
+kiwisolver
+llvmlite
+matplotlib
+networkx
+numba
+numpy
+Pillow
+pretty-errors
+PyDSTool
+pyparsing
+python-dateutil
+scipy
+six
+tqdm
