@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 32})
 import networkx as nx
 import numpy as np
 import sys
@@ -9,14 +10,14 @@ import os
 from tqdm import tqdm
 
 #####################################
-#Δημιουργία τυχαίου "r" μεταξύ 0 και 1 και επιστρέφει δείκτη του πρώτου στοιχείου στο αθροιστικό άθροισμα των πιθανοτήτων που υπερβαίνει αυτόν τον τυχαίο αριθμό "r"
+#Simulation of the random selection of an outcome based on the provided probabilities.
 #####################################
 @jit(nopython=True)
 def random_choice(p, r):
     return np.argmax(np.cumsum(p) > r)
 
 #####################################
-#Καθορισμός μεγέθους κόμβων
+#Size of nodes
 #####################################
 @jit(nopython=True)
 def size_of_nodes(x):
@@ -28,13 +29,16 @@ def size_of_nodes(x):
     return np.exp(b*x + a) + np.exp(d*x + c)
 
 #####################################
-#Υπολογισμός πιθανότητας ενεργειών. "x" (=ανταμοιβές) και μια παράμετρο "beta" (=).
+#Probabilities of actions based on x and scaling factor beta
 #####################################
 @jit(nopython=True)
 def _probalility_of_action(x, beta):
     p = np.exp(beta * x)
     return (p.T / p.sum(axis=-1)).T
 
+#####################################
+#Simulation of learning process from node interactions. The probabilities for each action are updated in each iteration.
+#####################################
 
 @jit
 def _iterate_graph(R, Q, S, N_per_epoch, N_nodes, P, J, actions, tags, nodes, neighbors_flat, neighbors_offset, payoff,
@@ -128,6 +132,7 @@ class bargain:
 
         self._update_statistics()
 
+    #Prevents memory leaks, performance and resource issues
     def __del__(self):
         if self.fig_stats != None:
             for fig in self.fig_stats:
@@ -305,13 +310,13 @@ class bargain:
             'M': 'tab:green',
             'H': 'tab:blue',
         }
-        linewidth = 2
+        linewidth = 4
 
         # ------------------------------------
         # Plot the percentages of each action
         # ------------------------------------
         k = 0
-        plt.figure(self.fig_stats[k].number)
+        plt.figure(self.fig_stats[k].number, figsize=(12, 6))
         self.ax_stats[k].clear()
 
         for level_key in level_keys:
@@ -325,14 +330,16 @@ class bargain:
                     label=level_key + ' of tag ' + str(l),
                     color=level_colors[level_key],
                     marker=self.node_shapes[l],
-                    markersize=4,
+                    markersize=6,
                     linewidth=linewidth,
                 )
-        self.ax_stats[k].legend()
+        legend = self.ax_stats[k].legend(loc='upper left', bbox_to_anchor=(1, 1))
         self.ax_stats[k].set_xlabel('Epoch')
         self.ax_stats[k].set_ylabel('Number of nodes with p>0.99')
         fig_path = self.results_folder + '/number_of_nodes_P'
-        plt.savefig(fig_path)
+        # plt.subplots_adjust(right=0.7)
+        # plt.tight_layout()
+        plt.savefig(fig_path, bbox_extra_artists=(legend,), bbox_inches='tight')
         plt.pause(0.005)
         plt.show(block=False)
 

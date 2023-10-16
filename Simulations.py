@@ -11,7 +11,8 @@ import networkx as nx
 betas = [0.3, 1, 3]
 alphas = [1, 5, 10, 100]
 lamdas = [0.2, 0.4]
-J0_vals = [[4, 1, 1], [1, 4, 1], [1, 1, 4]]
+# J0_vals = [[4, 1, 1], [1, 4, 1], [1, 1, 4]]
+
 
 # stable parameters initialization
 n = 21

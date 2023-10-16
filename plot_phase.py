@@ -4,7 +4,7 @@ import numpy as np
 
 ms = 7
 alpha = 0.4
-plt.rcParams.update({ 'font.size': 20 })
+plt.rcParams.update({ 'font.size': 100 })
 
 fname = 'phase_beta_neumann_4-4-4'
 
