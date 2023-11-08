@@ -75,9 +75,9 @@ def _iterate_graph(R, Q, S, N_per_epoch, N_nodes, P, J, actions, tags, nodes, ne
 
 
 def iterate_graph(N_per_epoch, N_nodes, *args, **kwargs):
-    R = np.random.randint(0, N_nodes, size=N_per_epoch)
-    Q = np.random.uniform(low=0.0, high=1.0, size=(N_per_epoch, 2))
-    S = np.random.uniform(low=0.0, high=1.0, size=(N_per_epoch, ))
+    R = np.random.randint(0, N_nodes, size=N_per_epoch) #random node selection
+    Q = np.random.uniform(low=0.0, high=1.0, size=(N_per_epoch, 2)) #random coordinates
+    S = np.random.uniform(low=0.0, high=1.0, size=(N_per_epoch, )) #values array
 
     _iterate_graph(R, Q, S, N_per_epoch, N_nodes, *args, **kwargs)
 
@@ -189,6 +189,7 @@ class bargain:
             self.neighbors_offsets[i + 1] = offset + len(l)
             offset += len(l)
 
+    #ensures node attributes consistency with internal data of the class instance
     def copy_data_to_graph(self):
         for node in self.G:
             node_data = self.G.nodes[node]
@@ -213,6 +214,8 @@ class bargain:
 
         print('[games] Total iterations = {:}'.format(self.iter))
         print('[games] Average iterations per agent = {:.2f}'.format(self.iter / self.N_nodes))
+
+        self.barplot_function()
 
     def plot_graph(self, with_labels=False, fig_size=(10, 10), node_size=None, position_function=None):
 
@@ -256,12 +259,12 @@ class bargain:
 
             self.ax_graph[k].axis('off')
 
-            plt.text(0,
-                     1,
-                     f'tag = {k}',
-                     horizontalalignment='center',
-                     verticalalignment='center',
-                     transform=self.ax_graph[k].transAxes)
+            # plt.text(0,
+            #          1,
+            #          f'tag = {k}',
+            #          horizontalalignment='center',
+            #          verticalalignment='center',
+            #          transform=self.ax_graph[k].transAxes)
 
             fig_path = self.results_folder + '/graph_' + str(k)
             plt.savefig(fig_path)
@@ -327,7 +330,8 @@ class bargain:
                 self.ax_stats[k].plot(
                     np.arange(len(data)),
                     data[:, l],
-                    label=level_key + ' of tag ' + str(l),
+                    label=level_key,
+                    #+ ' of tag ' + str(l),
                     color=level_colors[level_key],
                     marker=self.node_shapes[l],
                     markersize=6,
@@ -342,6 +346,23 @@ class bargain:
         plt.savefig(fig_path, bbox_extra_artists=(legend,), bbox_inches='tight')
         plt.pause(0.005)
         plt.show(block=False)
+
+    def barplot_function(self):
+        last_it_data = [self.statistics['per_H'][-1], self.statistics['per_M'][-1], self.statistics['per_L'][-1]]
+
+        level_keys = ['H', 'M', 'L']
+
+        plt.figure(figsize=(12, 6))
+        plt.bar(level_keys, last_it_data, color='red')
+
+        plt.xlabel('Level')
+        plt.ylabel('Number of Nodes with p > 0.8')
+        plt.title('Number of Nodes with p > 0.8 at Last Iteration')
+    
+        fig_path = os.path.join(self.results_folder, 'barplot.png')
+        plt.savefig(fig_path)
+
+        plt.show()
 
     def _get_vertex_positions(self, data, prob_axis=2):
         assert (prob_axis in [ 2, 3 ])

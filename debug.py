@@ -34,3 +34,4 @@ for k in range(num_runs):
     
 game.plot_graph(node_size=node_size)
 game.plot_statistics()
+# game.barplot_function()
