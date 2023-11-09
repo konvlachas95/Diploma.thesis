@@ -215,7 +215,7 @@ class bargain:
         print('[games] Total iterations = {:}'.format(self.iter))
         print('[games] Average iterations per agent = {:.2f}'.format(self.iter / self.N_nodes))
 
-        self.barplot_function()
+        # self.barplot_function()
 
     def plot_graph(self, with_labels=False, fig_size=(10, 10), node_size=None, position_function=None):
 
@@ -348,19 +348,21 @@ class bargain:
         plt.show(block=False)
 
     def barplot_function(self):
-        last_it_data = [self.statistics['per_H'][-1], self.statistics['per_M'][-1], self.statistics['per_L'][-1]]
+        last_it_data = [self.statistics['per_H'][-1][0], self.statistics['per_M'][-1][0], self.statistics['per_L'][-1][0]]
 
         level_keys = ['H', 'M', 'L']
+        colors = ['tab:blue', 'tab:green', 'tab:red']
+
 
         plt.figure(figsize=(12, 6))
-        plt.bar(level_keys, last_it_data, color='red')
+        plt.bar(level_keys, last_it_data, color=colors)
 
-        plt.xlabel('Level')
+        plt.xlabel('Nodes per payoff')
         plt.ylabel('Number of Nodes with p > 0.8')
-        plt.title('Number of Nodes with p > 0.8 at Last Iteration')
     
         fig_path = os.path.join(self.results_folder, 'barplot.png')
-        plt.savefig(fig_path)
+        plt.tight_layout()
+        plt.savefig(fig_path, bbox_inches='tight', pad_inches=0.1)
 
         plt.show()
 

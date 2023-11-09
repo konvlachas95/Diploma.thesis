@@ -10,7 +10,7 @@ import networkx as nx
 # variable parameters
 beta = 3
 alpha = 5
-lamda = 0.4
+lamda = 0.2
 J0 = [4, 1, 1]
 
 # stable parameters initialization
@@ -34,4 +34,5 @@ for k in range(num_runs):
     
 game.plot_graph(node_size=node_size)
 game.plot_statistics()
-# game.barplot_function()
+game.plot_simplex()
+game.barplot_function()
