@@ -11,7 +11,7 @@ import networkx as nx
 betas = [0.3, 1, 3]
 alphas = [1, 5, 10, 100]
 lamdas = [0.2, 0.4]
-# J0_vals = [[4, 1, 1], [1, 4, 1], [1, 1, 4]]
+J0_vals = [[4, 1, 1], [1, 4, 1], [1, 1, 4]]
 
 
 # stable parameters initialization
@@ -34,8 +34,9 @@ for beta in betas:
                 game = bargain(G, beta=beta, gamma=gamma, lamda=lamda, alpha=alpha, J0=J0, folder=run_name, N_tags=N_tags)
                 for k in range(num_runs):
                     game.play(N_epochs=N_epochs)
-                    # game.plot_graph(node_size=node_size)
-                    # game.plot_statistics()
+
                     
                 game.plot_graph(node_size=node_size)
                 game.plot_statistics()
+                game.plot_simplex()
+                game.barplot_function()

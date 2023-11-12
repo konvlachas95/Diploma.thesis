@@ -358,11 +358,11 @@ class bargain:
         plt.bar(level_keys, last_it_data, color=colors)
 
         plt.xlabel('Nodes per payoff')
-        plt.ylabel('Number of Nodes with p > 0.8')
+        plt.ylabel('Nodes with p > 0.8')
     
         fig_path = os.path.join(self.results_folder, 'barplot.png')
-        plt.tight_layout()
-        plt.savefig(fig_path, bbox_inches='tight', pad_inches=0.1)
+        # plt.tight_layout()
+        plt.savefig(fig_path, bbox_inches='tight')
 
         plt.show()
 
