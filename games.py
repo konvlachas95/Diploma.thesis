@@ -348,10 +348,9 @@ class bargain:
         plt.show(block=False)
 
     def barplot_function(self):
-        last_it_data = [self.statistics['per_H'][-1][0], self.statistics['per_M'][-1][0], self.statistics['per_L'][-1][0]]
-
-        level_keys = ['H', 'M', 'L']
-        colors = ['tab:blue', 'tab:green', 'tab:red']
+        last_it_data = [self.statistics['per_L'][-1][0], self.statistics['per_M'][-1][0], self.statistics['per_H'][-1][0]]
+        level_keys = ['L', 'M', 'H']
+        colors = ['tab:red', 'tab:green', 'tab:blue']
 
 
         plt.figure(figsize=(12, 6))
@@ -359,12 +358,15 @@ class bargain:
 
         plt.xlabel('Nodes per payoff')
         plt.ylabel('Nodes with p > 0.8')
+        plt.autoscale()
     
         fig_path = os.path.join(self.results_folder, 'barplot.png')
         # plt.tight_layout()
         plt.savefig(fig_path, bbox_inches='tight')
 
         plt.show()
+
+
 
     def _get_vertex_positions(self, data, prob_axis=2):
         assert (prob_axis in [ 2, 3 ])
@@ -482,75 +484,75 @@ class bargain:
             plt.pause(0.005)
             plt.show(block=False)
 
-        # Only plotting the inter-type equity (between Tags)
-        # when there are more than 1 tag.
-        # Function for N_tags > 2 not implemented.
-        if self.N_tags == 2:
+        # # Only plotting the inter-type equity (between Tags)
+        # # when there are more than 1 tag.
+        # # Function for N_tags > 2 not implemented.
+        # if self.N_tags == 2:
 
-            # ------------------------------------------------
-            # Plot the simplex in J
-            # Plotting the intra-type equity (Tag versus own tag)
-            # ------------------------------------------------
-            k = 0
-            plt.figure(self.fig_simplex[k].number)
-            self.ax_simplex[k].clear()
-            self._add_triangle(self.ax_simplex[k])
+        #     # ------------------------------------------------
+        #     # Plot the simplex in J
+        #     # Plotting the intra-type equity (Tag versus own tag)
+        #     # ------------------------------------------------
+        #     k = 0
+        #     plt.figure(self.fig_simplex[k].number)
+        #     self.ax_simplex[k].clear()
+        #     self._add_triangle(self.ax_simplex[k])
 
-            # Last element of p_all (in time)
-            data = self.statistics['j_all'][-1]
-            p_x, p_y = self._get_vertex_positions(data)
-            for l in range(self.N_tags):
-                tag_own = l
-                tag_oponent = l
-                idx_tag = np.where(self.tags == tag_own)[0]
-                p_x_tag = p_x[idx_tag, tag_oponent]
-                p_y_tag = p_y[idx_tag, tag_oponent]
-                self.ax_simplex[k].plot(
-                    p_x_tag + 0.01 * np.random.randn(*np.shape(p_x_tag)),
-                    p_y_tag + 0.01 * np.random.randn(*np.shape(p_y_tag)),
-                    markersize=8,
-                    linewidth=0,
-                    marker=self.node_shapes[l],
-                    label="Tag {:} against tag {:}".format(tag_own, tag_oponent),
-                )
+        #     # Last element of p_all (in time)
+        #     data = self.statistics['j_all'][-1]
+        #     p_x, p_y = self._get_vertex_positions(data)
+        #     for l in range(self.N_tags):
+        #         tag_own = l
+        #         tag_oponent = l
+        #         idx_tag = np.where(self.tags == tag_own)[0]
+        #         p_x_tag = p_x[idx_tag, tag_oponent]
+        #         p_y_tag = p_y[idx_tag, tag_oponent]
+        #         self.ax_simplex[k].plot(
+        #             p_x_tag + 0.01 * np.random.randn(*np.shape(p_x_tag)),
+        #             p_y_tag + 0.01 * np.random.randn(*np.shape(p_y_tag)),
+        #             markersize=8,
+        #             linewidth=0,
+        #             marker=self.node_shapes[l],
+        #             label="Tag {:} against tag {:}".format(tag_own, tag_oponent),
+        #         )
 
-            self.ax_simplex[k].legend()
-            fig_path = self.results_folder + '/simplex_J_intra_within'
-            plt.savefig(fig_path)
-            plt.pause(0.005)
-            plt.show(block=False)
+        #     self.ax_simplex[k].legend()
+        #     fig_path = self.results_folder + '/simplex_J_intra_within'
+        #     plt.savefig(fig_path)
+        #     plt.pause(0.005)
+        #     plt.show(block=False)
 
-            # ------------------------------------------------
-            # Plot the simplex in J
-            # Plotting the inter-type equity (between Tags)
-            # ------------------------------------------------
-            k = 1
-            plt.figure(self.fig_simplex[k].number)
-            self.ax_simplex[k].clear()
-            self._add_triangle(self.ax_simplex[k])
-            # Last element of p_all (in time)
-            data = self.statistics['j_all'][-1]
-            p_x, p_y = self._get_vertex_positions(data)
+        #     # ------------------------------------------------
+        #     # Plot the simplex in J
+        #     # Plotting the inter-type equity (between Tags)
+        #     # ------------------------------------------------
+        #     k = 1
+        #     plt.figure(self.fig_simplex[k].number)
+        #     self.ax_simplex[k].clear()
+        #     self._add_triangle(self.ax_simplex[k])
+        #     # Last element of p_all (in time)
+        #     data = self.statistics['j_all'][-1]
+        #     p_x, p_y = self._get_vertex_positions(data)
 
-            for l in range(self.N_tags):
-                tag_own = l
-                tag_oponents = set(range(self.N_tags))
-                tag_oponents = tag_oponents.difference(set([l]))
-                assert (len(tag_oponents) == 1)
-                for tag_oponent in tag_oponents:
-                    idx_tag = np.where(self.tags == tag_own)[0]
-                    p_x_tag = p_x[idx_tag, tag_oponent]
-                    p_y_tag = p_y[idx_tag, tag_oponent]
-                    self.ax_simplex[k].plot(
-                        p_x_tag + 0.01 * np.random.randn(*np.shape(p_x_tag)),
-                        p_y_tag + 0.01 * np.random.randn(*np.shape(p_y_tag)),
-                        markersize=6,
-                        linewidth=0,
-                        marker=self.node_shapes[l],
-                        label="Tag {:} against tag {:}".format(tag_own, tag_oponent),
-                    )
-            self.ax_simplex[k].legend()
-            fig_path = self.results_folder + '/simplex_J_inter_between'
-            plt.savefig(fig_path)
-            plt.pause(0.005)
-            plt.show(block=False)
+        #     for l in range(self.N_tags):
+        #         tag_own = l
+        #         tag_oponents = set(range(self.N_tags))
+        #         tag_oponents = tag_oponents.difference(set([l]))
+        #         assert (len(tag_oponents) == 1)
+        #         for tag_oponent in tag_oponents:
+        #             idx_tag = np.where(self.tags == tag_own)[0]
+        #             p_x_tag = p_x[idx_tag, tag_oponent]
+        #             p_y_tag = p_y[idx_tag, tag_oponent]
+        #             self.ax_simplex[k].plot(
+        #                 p_x_tag + 0.01 * np.random.randn(*np.shape(p_x_tag)),
+        #                 p_y_tag + 0.01 * np.random.randn(*np.shape(p_y_tag)),
+        #                 markersize=6,
+        #                 linewidth=0,
+        #                 marker=self.node_shapes[l],
+        #                 label="Tag {:} against tag {:}".format(tag_own, tag_oponent),
+        #             )
+        #     self.ax_simplex[k].legend()
+        #     fig_path = self.results_folder + '/simplex_J_inter_between'
+        #     plt.savefig(fig_path)
+        #     plt.pause(0.005)
+        #     plt.show(block=False)

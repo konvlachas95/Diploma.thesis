@@ -8,7 +8,7 @@ import networkx as nx
 
 
 # variable parameters
-betas = [0.3, 1, 3]
+betas = [3]
 alphas = [1, 5, 10, 100]
 lamdas = [0.2, 0.4]
 J0_vals = [[4, 1, 1], [1, 4, 1], [1, 1, 4]]
@@ -37,6 +37,10 @@ for beta in betas:
 
                     
                 game.plot_graph(node_size=node_size)
+                plt.close()
                 game.plot_statistics()
+                plt.close()
                 game.plot_simplex()
+                plt.close()
                 game.barplot_function()
+                plt.close()

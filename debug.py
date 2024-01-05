@@ -9,12 +9,12 @@ import networkx as nx
 
 # variable parameters
 beta = 3
-alpha = 5
-lamda = 0.2
+alpha = 100
+lamda = 0.4
 J0 = [4, 1, 1]
 
 # stable parameters initialization
-n = 6
+n = 21
 gamma = 0.1
 N_tags = 1
 N_epochs = 1000
