@@ -14,7 +14,7 @@ node_size = 100
 
 G = gr.lattice_von_neumann(n)
 
-game = bargain(G, beta=2, J0=[ 6, 4, 3 ], N_tags=2)
+game = bargain(G, beta=2, J0=[ 6, 4, 3 ])
 
 # game.plot_graph(node_size=node_size)
 

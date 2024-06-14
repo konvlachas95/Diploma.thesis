@@ -7,14 +7,14 @@ import numpy as np
 import networkx as nx
 
 
-# variable parameters
-betas = [3]
+# Variable parameters
+betas = [0.3, 1, 3]
 alphas = [1, 5, 10, 100]
 lamdas = [0.2, 0.4]
 J0_vals = [[4, 1, 1], [1, 4, 1], [1, 1, 4]]
 
 
-# stable parameters initialization
+# Stable parameters initialization
 n = 21
 gamma = 0.1
 N_tags = 1
@@ -24,6 +24,8 @@ lattice = "lattice_von_neumann"
 node_size = 100
 G = gr.lattice_von_neumann(n)
 
+
+# Run simulations for all combinations of parameters
 for beta in betas:
     for alpha in alphas:
         for lamda in lamdas:
@@ -31,11 +33,15 @@ for beta in betas:
             
                 run_name = "_results_n={:}_beta={:}_gamma={:}_lamda={:}_alpha={:}_J0={:}_lattice={:}_tags={:}".format(n, beta, gamma, lamda, alpha, J0, lattice, N_tags)
 
+                # Initialize bargaining game
                 game = bargain(G, beta=beta, gamma=gamma, lamda=lamda, alpha=alpha, J0=J0, folder=run_name, N_tags=N_tags)
+                
+                # Run simulation for specified number of epochs
                 for k in range(num_runs):
                     game.play(N_epochs=N_epochs)
 
-                    
+
+                # Generate plots for the results    
                 game.plot_graph(node_size=node_size)
                 plt.close()
                 game.plot_statistics()

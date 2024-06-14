@@ -9,11 +9,6 @@ def lattice_von_neumann(n):
     G = relabel(G)
     return G
 
-def path(n):
-    G = nx.path_graph(n)
-    G = relabel(G)
-    return G
-
 ############################
 # Relabel the nodes of G with integer labels
 ############################
