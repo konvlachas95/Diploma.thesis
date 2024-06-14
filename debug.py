@@ -9,9 +9,9 @@ import networkx as nx
 
 # variable parameters
 beta = 3
-alpha = 100
-lamda = 0.4
-J0 = [4, 1, 1]
+alpha = 1
+lamda = 0.2
+J0 = [1, 1, 4]
 
 # stable parameters initialization
 n = 21
